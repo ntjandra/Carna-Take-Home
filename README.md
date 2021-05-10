@@ -57,9 +57,10 @@ ie. *localhost:8000/api/users/1*
 
 ### Website 
 To visit the website, go to **localhost:5000**
-The website consists of 5 pages.
+The website consists of 6 pages.
 - Home Page
-- Sign in Page
+- Sign Up Page
+- Login Page
 - Profile Page
 - Course Page
 - Quiz Page

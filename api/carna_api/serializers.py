@@ -5,7 +5,8 @@ from .models import User # , Course
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username',)
+        # Return Username and ID to search for user.
+        fields = ('username', 'id')
 
 # Handle User Login using JWT
 class UserSerializerWithToken(serializers.ModelSerializer):
