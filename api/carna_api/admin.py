@@ -1,11 +1,15 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Course
+from .models import User # , Course, Questions
 
-class CourseAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'completed')
+# Users have first_name, last_name, bio
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('first_name','last_name','bio')
 
-# Register your models here.
+# class CourseAdmin(admin.ModelAdmin):
+#     # Display 
+#     list_display = ('title', 'description', 'completed')
 
-admin.site.register(Course, CourseAdmin)
+
+admin.site.register(User, UserAdmin)

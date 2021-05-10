@@ -31,7 +31,10 @@ To make sure there are no extra components that could clash with the imports, I 
 To start the project run
 
 ```python start_up.py```
-
+<!-- pip install -r requirements.txt -->
+<!-- python manage.py runserver 0.0.0.0:5000 for Django -->
+<!-- npm install for packages -->
+<!-- npm start for React -->
 ## Usage <a name = "usage"></a>
 
 ### Admin
@@ -62,14 +65,12 @@ The website consists of 5 pages.
 - Quiz Page
 
 ## Testing <a name = "test"></a>
-
 For API testing, I use [Postman]() to generate a collection of endpoint calls to then verify the outputs and response status. For load balance testing, I use [Locust]() to hit randomized endpoints with parameters at a customized frequency and then generate a chart to view response time and failures.
-
 
 # Developer Notes
 - Backend: This was the first time I've used Django, so starting it up was the hardest part, but once I got past the setup the rest was similar to Flask (models, views) so it became easy to build. 
 
     - Challenges: The directory structure was very confusing at first and finding out how manage.py works.
 <br>
-- Frontend: I've done projects with React but use third party apps to handle login, so building an authenthicator was new for me. We were told to not focus on the UI too heavily so I use Bootstrap to created basic buttons to call endpoints and displayed the results on a card in the page.
+- Frontend: I've done projects with React but use third party apps to handle login, so building an authenthicator was new for me. I was told to not focus on the UI too heavily so I use Bootstrap to created basic buttons to call endpoints and displayed the results on a card in the page.
     - Challenges: Learning React JWT and keeping track of user session.
