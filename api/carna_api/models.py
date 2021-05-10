@@ -6,6 +6,7 @@ from django.db import models
 # A User has a name and bio
 class User(models.Model):
     # Set Default Parameters
+    username = models.CharField(max_length=30)
     first_name = models.CharField("Person's first name", max_length=30)
     last_name = models.CharField("Person's last name", max_length=30)
     bio = models.TextField("Tell me about yourself")
