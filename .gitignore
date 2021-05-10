@@ -205,3 +205,4 @@ dist
 # TernJS port file
 .tern-port
 api/db.sqlite3
+.vscode/settings.json
