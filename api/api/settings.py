@@ -154,3 +154,6 @@ CORS_ORIGIN_WHITELIST = [
 JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'api.utils.my_jwt_response_handler'
 }
+
+# Switch to my User as Auth
+# AUTH_USER_MODEL = 'carna_api.CarnaUser'

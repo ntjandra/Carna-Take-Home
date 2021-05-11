@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from .models import CarnaUser, Course #, Questions
 
 
@@ -6,7 +7,7 @@ from .models import CarnaUser, Course #, Questions
 
 # Users have first_name, last_name, bio
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('first_name','last_name','bio')
+    list_display = ('first_name','last_name','bio', 'is_teacher', 'is_student')
 
 class CourseAdmin(admin.ModelAdmin):
     # Display Courses
