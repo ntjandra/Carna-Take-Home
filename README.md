@@ -68,10 +68,18 @@ The website consists of 6 pages.
 ## Testing <a name = "test"></a>
 For API testing, I use [Postman]() to generate a collection of endpoint calls to then verify the outputs and response status. For load balance testing, I use [Locust]() to hit randomized endpoints with parameters at a customized frequency and then generate a chart to view response time and failures.
 
+Test Cases:
+- Teacher and Student share same login
+    - Teacher tries to login via student portal
+    - Student tries to login via teacher portal
+- User bio exceeds 100 characters. Username is too long.
+
 # Developer Notes
 - Backend: This was the first time I've used Django, so starting it up was the hardest part, but once I got past the setup the rest was similar to Flask (models, views) so it became easy to build. 
 
     - Challenges: The directory structure was very confusing at first and finding out how manage.py works.
+    - Mistakes: I deleted the migrations folder to "start from scratch". Never do this. Ever.. I fixed it by eventually hard resetting the db by dropping all tables, then reran migrate.
 <br>
 - Frontend: I've done projects with React but use third party apps to handle login, so building an authenthicator was new for me. I was told to not focus on the UI too heavily so I use Bootstrap to created basic buttons to call endpoints and displayed the results on a card in the page.
     - Challenges: Learning React JWT and keeping track of user session.
+    - Another challenge was seperating the logins for a Teacher account versus a Student account.

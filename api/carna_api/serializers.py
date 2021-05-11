@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from .models import User # , Course
+from rest_framework_jwt.settings import api_settings
+from django.contrib.auth.models import User
+from .models import Course
 
 # Create a Serializer for the User Table
 class UserSerializer(serializers.ModelSerializer):
@@ -35,9 +37,9 @@ class UserSerializerWithToken(serializers.ModelSerializer):
         model = User
         fields = ('token', 'username', 'password')
 
-# Create a Serializer for the Courses Table
-# class CourseSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Course
-#         fields = ('id', 'title', 'description', 'completed')
+# Create a Serializer for the Courses Model
+class CourseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Course
+        fields = ('id', 'creator_id', 'title', 'release_date')
 

@@ -4,7 +4,7 @@ from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import UserSerializer # , CourseSerializer 
+from .serializers import UserSerializer, UserSerializerWithToken # , CourseSerializer 
 from .models import User # , Course
 
 
@@ -37,6 +37,7 @@ class UserList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 # # Create your views here.
 # class CourseView(viewsets.ModelViewSet):
 #     serializer_class = CourseSerializer
