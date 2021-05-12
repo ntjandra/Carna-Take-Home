@@ -21,12 +21,13 @@ from carna_api import views
 
 # Add the route to the course model
 router = routers.DefaultRouter()
-# router.register(r'courses', views.CourseView, 'course') # url/api/courses/
+router.register(r'courses', views.CourseView, 'course') # url/api/courses/
 
 # URL for Hosting Django Admin Panel and API Endpoints,
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/', include('carna_api.urls')), # User URLs here.
     path('token-auth/', obtain_jwt_token),
-    path('carna_api/', include('carna_api.urls')), # Exclusive App Urls for login.
+    
 ]
