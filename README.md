@@ -82,7 +82,7 @@ Test Cases:
         - Understanding what ViewSets are and the alternatives, such as function calls.
     - Mistakes: I deleted the migrations folder to "start from scratch". Never do this. Ever! I fixed it by eventually hard resetting the db by dropping all tables, then reran migrate.
 <br>
-- Frontend: I've done projects with React but use third party apps to handle login, so building an authenthicator was new for me. I was told to not focus on the UI too heavily so I use Bootstrap to created basic buttons to call endpoints and displayed the results on a card in the page.
+- Frontend: I've done projects with React but use third party apps to handle login, so building an authenthicator was new for me. I was told to not focus on the UI too heavily so I use Bootstrap to created basic buttons to call endpoints and displayed the results on a card in the page. Errors Messages were shown on the page to verify the endpoint response.
     - Challenges
-        - Learning React JWT and keeping track of user session.
+        - Learning React JWT and keeping track of user session, especially persisting it over to the next pages.
         - Seperating the logins for a Teacher account versus a Student account. Had to add the is_teacher/Student to token fields.

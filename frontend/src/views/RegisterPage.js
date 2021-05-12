@@ -3,6 +3,8 @@ import Nav from '../components/Nav';
 import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm';
 
+// This page handles Login and Register. 
+// Split this into two seperate pages.
 class RegisterPage extends Component {
   constructor(props) {
     super(props);
