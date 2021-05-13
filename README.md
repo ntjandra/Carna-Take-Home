@@ -6,6 +6,7 @@
 - [Prerequisites](#prerequisties)
 - [Usage](#usage)
 - [Test](#test)
+- [Technical Q/A](#qa)
 ## About <a name = "about"></a>
 
 The goal of the take home was to create a full-stack application that can perform CRUD operations in the context of an edtech platform for learning languages.
@@ -38,51 +39,113 @@ To start the project run
 ## Usage <a name = "usage"></a>
 
 ### Admin
-On **localhost:8000/admin/** there is a field to login as a superuser and add more users.
-You can set this up to be anything you like by running the command here and replacing the field.
+On **http://localhost:8000/admin/** there is a field to login as a superuser and add more users.
+You can set this up to be anything you like by running the command here and replacing the fields of 'admin', 'admin@example.com', 'adminpass'.
 
 ```./manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'adminpass')"```
 
-Upon logging in to the dashboard the admin can manually add Courses, Users, and Questions.
+Upon logging in to the dashboard the admin can manage Courses, Users, and Questions. In addition, the admin can also export the data into a JSON or CSV, or load in their own datasheet.
 ### API
-On **localhost:8000/api/**
-You can perform CRUD operations for all the existing tables of data. There are three routes for the User, Course, and Question.
+On **http://localhost:8000/api/**
+The API is hosted to perform CRUD operations for all the existing tables of data. There are three routes for the User, Course, and Question.
 
-- *localhost:8000/api/users/*
-- *localhost:8000/api/courses/*
-- *localhost:8000/api/questions/*
+- *http://localhost:8000/api/users/*
+- *http://localhost:8000/api/courses/*
+- *http://localhost:8000/api/questions/*
 
-To view a specific response, add the id after the '/'
-ie. *localhost:8000/api/users/1*
+To view a specific resource, add the id after the '/'
+
+ie. *http://localhost:8000/api/users/1* to view the user with the id 1
+
+Note that the user route requires authenthication in order to edit or view another user's information. This can be done by logging in via the admin route or filling in the form at 
+*http://localhost:8000/token-auth/*.
 
 ### Website 
-To visit the website, go to **localhost:5000**
-The website consists of 6 pages.
+The website is hosted on **http://localhost:5000**
+and consists of 6 pages.
 - Home Page
 - Sign Up Page
 - Login Page
 - Profile Page
 - Course Page
-- Quiz Page
+- Quiz Page (WIP)
 
 ## Testing <a name = "test"></a>
-For API testing, I use [Postman]() to generate a collection of endpoint calls to then verify the outputs and response status. For load balance testing, I use [Locust]() to hit randomized endpoints with parameters at a customized frequency and then generate a chart to view response time and failures.
+For API testing, I use [Postman]() to generate a collection of endpoint calls to then verify the outputs and response status. For load balance testing, I use [Locust]() to hit randomized endpoints with parameters at a customized frequency and then generate a chart to view response time and failures. Part of the requirements were to test on 100 concurrrent requests and attached bellow are the results
+
+[Results]()
+
+Test Criteria:
+- API response must not exceed 2.5 seconds.
+- API is sent 100 requests per second.
+- Basic SQL Injection Attack mixed in: i.e "(Robert'); DROP TABLE User;--)".
 
 Test Cases:
-- Teacher and Student share same login
-    - Teacher tries to login via student portal
-    - Student tries to login via teacher portal
-- User bio exceeds 100 characters. Username is too long.
+
+Notes: Guest means not logged in.
+- CREATE
+    - User password strength must follow the Django Guidelines. 
+    - Username is too long.
+    - Username is already taken.
+    - Username contains restricted characters
+    - Login does not match User in system
+    - Login matches User in system
+    - Logged in user creates a new course
+- READ
+    - Anyone can view Course List
+    - Guest cannot view User List
+    - Admin can view User List
+- UPDATE
+    - Users can edit their owned course
+    - Guests are not be able to edit course
+    - Admin can edit any course    
+- DELETE
+    - Users can delete their owned course
+    - Users can delete their account
+    - Admin can delete any account
+    - Admin can delete any course
 
 # Developer Notes
 - Backend: This was the first time I've used Django, so starting it up was the hardest part, but once I got past the setup the rest was similar to Flask (models, views) so it became easy to build. 
 
-    - Challenges: The directory structure was very confusing at first and finding out how manage.py works.
-        - Creating a Custom login in order to customize User types (Students and Teachers). Django's Built in needed to be rewritten.
-        - Understanding what ViewSets are and the alternatives, such as function calls.
-    - Mistakes: I deleted the migrations folder to "start from scratch". Never do this. Ever! I fixed it by eventually hard resetting the db by dropping all tables, then reran migrate.
+    - Challenges: 
+        - The directory structure was very confusing at first and finding out how manage.py works was through trial and error.
+        - Creating a Custom login in order to customize User types (Students and Teachers). Django's Built in needed to be rewritten. This was the only way to add a filter by location.
+        - Understanding what ViewSets are and how they work, and the alternatives, such as direct function calls.
+        - Looking back into the old history of regex to define routes.
+    - Mistakes: I deleted the migrations folder to "restart from scratch". Never do this. Ever! I fixed it by eventually hard resetting the db by dropping all tables, then reran migrate.
 <br>
-- Frontend: I've done projects with React but use third party apps to handle login, so building an authenthicator was new for me. I was told to not focus on the UI too heavily so I use Bootstrap to created basic buttons to call endpoints and displayed the results on a card in the page. Errors Messages were shown on the page to verify the endpoint response.
+- Frontend: I've done projects with React but use third party apps to handle login, so building an authenthicator was new for me. I was told not to focus on the UI too heavily so I leveraged Bootstrap to create basic buttons to call endpoints and displayed the results on a card in the page. Errors messages were shown on the page to verify the endpoint response.
     - Challenges
         - Learning React JWT and keeping track of user session, especially persisting it over to the next pages.
         - Seperating the logins for a Teacher account versus a Student account. Had to add the is_teacher/Student to token fields.
+    - Mistakes
+        - I spent too much time deciding between Axios and Fetch for sending HTTP requests.
+
+# Technical Questions <a name = "qa"></a>
+### 1. What libraries did you add to the frontend? What are they used for?
+- I chose React as the framework for my Frontend. Inside React I imported the following libraries.
+    - Reactstrap x Bootstrap, to handle styling using prebuilt components that I extended to meet the needs.
+    - prop-types, to check and validate type errors when passing props. It also makes the components easier to understand.
+    - react-scripts, a built in part of the React framework that starts up the web server for building or quick deployment.
+    - react-router-dom, to maintain page history and routes for each page.
+
+### 2. What's the command to start the application locally?
+- ```python start_up.py``` runs a series of other commands, mainly initializing the Database, API, and website in the background.
+
+### 3. How long did you spend on the coding project? What would you add to your solution if you had more time? If you didn't spend much time on the coding project, then use this as an opportunity to explain what you would add.
+- I spent roughly 4 hours a day for the given week. Approx 16 so far. I wanted to showcase what I can do as a Full-Stack and used the Take-Home project as my motivator to learn Django and JWT handling. 
+- On the Backend, if I had more time I would have created a custom user model, instead of using Django's built-in User model.
+- On the Frontend, I would add more screens and buttons that interact with the API, and more tests.
+- As an extra feature, I wanted to finish adding quiz questions to a course.
+
+4. What was the most useful feature that was added to the latest version of your chosen language? Please include a snippet of code that shows how you've used it.
+- In terms of the Python Framework, Django, having the Admin Panel be built-in made it very easy to create a dashboard. There were also some libraries to extend the dashboard to handle import/export of large datasets.
+- As for React, ES6 allowing developers to create values as variables helped make passing values much easier.
+- Outside of frameworks I did not use any recent language only feature.
+
+   [Image](Img)
+
+5. How would you track down a performance issue in production? Have you ever had to do this?
+- I would start from looking at the time it takes for the API to process a request, as most performance issues are on the Backend. This could lead to a bottleneck where a query takes far too long. While if the page itself was loading slowly, I would inspect the Frontend React Components and make sure the state is updated properly and the endpoint is called exactly once.
+- Speaking from experience, I dealt with an issue where a query to fetch the location of all IoT devices took a long time. This endpoint was called upon visiting the homepage and was resolved by caching the result into a view and triggering an update on the view every 30 minutes.
