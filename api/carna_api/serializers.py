@@ -41,5 +41,5 @@ class UserSerializerWithToken(serializers.ModelSerializer):
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
-        fields = ('id', 'creator_id', 'title', 'release_date')
+        fields = ('id', 'creator_id', 'title', 'release_date', 'stars')
 

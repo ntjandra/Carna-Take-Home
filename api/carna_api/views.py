@@ -7,10 +7,17 @@ from rest_framework.views import APIView
 from .serializers import UserSerializer, UserSerializerWithToken, CourseSerializer 
 from .models import CarnaUser, Course
 
-
+# Users require login
 class UserView(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = CarnaUser.objects.all()
+
+# Courses are available to the public
+class CourseView(viewsets.ModelViewSet):
+    permission_classes = (permissions.AllowAny,)
+    serializer_class = CourseSerializer
+    queryset = Course.objects.all()
+
 
 # Viewsets are confusing for JWT. Do it using a function-based view
 @api_view(['GET'])
@@ -22,7 +29,7 @@ def current_user(request):
     serializer = UserSerializer(request.user)
     return Response(serializer.data)
 
-
+# Add a user to the Django User Built-In Model
 class UserList(APIView):
     """
     Create a new user. It's called 'UserList' because normally we'd have a get
@@ -37,8 +44,3 @@ class UserList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-# Create your views here.
-class CourseView(viewsets.ModelViewSet):
-    serializer_class = CourseSerializer
-    queryset = Course.objects.all()
