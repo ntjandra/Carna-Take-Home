@@ -67,12 +67,12 @@ Note that the user route requires authenthication in order to edit or view anoth
 
 ### Website 
 The website is hosted on **http://localhost:3000**
-and consists of 6 pages.
+and consists of 4 completed pages.
 - Home Page
-- Sign Up Page
-- Login Page
-- Profile Page
+- Sign Up and Login Page
 - Course Page
+- Program Page
+- Profile Page (WIP)
 - Quiz Page (WIP)
 
 ## Testing <a name = "test"></a>
