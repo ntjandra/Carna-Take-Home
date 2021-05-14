@@ -5,12 +5,13 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import UserSerializer, UserSerializerWithToken, CourseSerializer 
-from .models import CarnaUser, Course
+# from django.contrib.auth.models import User
+from .models import Course # , CarnaUser
 
 # Users require login
-class UserView(viewsets.ModelViewSet):
-    serializer_class = UserSerializer
-    queryset = CarnaUser.objects.all()
+# class UserView(viewsets.ModelViewSet):
+#     serializer_class = UserSerializer
+#     queryset = CarnaUser.objects.all()
 
 # Courses are available to the public
 class CourseView(viewsets.ModelViewSet):

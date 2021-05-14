@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from django.contrib.auth.models import User
-from .models import Course # ,CarnaUser
+from .models import Course # , CarnaUser
 
 # Create a Serializer for the built-in User model
 class UserSerializer(serializers.ModelSerializer):

@@ -10,6 +10,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 # There should only be ONE user Model in a project.
 # Back to using the BuiltIn
+
+"""
 class CarnaUser(models.Model):
     # Set Default Parameters
     # REQUIRED_FIELDS = ('user',)
@@ -36,6 +38,8 @@ class CarnaUser(models.Model):
     # Return Full Name, Formatted for Display
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+"""
+
 
 # Model for Course 
 # A course has a creator, Title, description, when it was posted and the ratings.
