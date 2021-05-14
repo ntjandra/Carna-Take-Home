@@ -3,9 +3,10 @@
 
 - [About](#about)
 - [Getting Started](#getting_started)
-- [Prerequisites](#prerequisties)
 - [Usage](#usage)
 - [Test](#test)
+- [Notes](#dev)
+- [Features](#summary)
 - [Technical Q/A](#qa)
 ## About <a name = "about"></a>
 
@@ -29,10 +30,9 @@ password = 'password'
 
 To make sure there are no extra components that could clash with the imports, I recommend creating a [Virtual Environment]() using pipenv.
 
-To start the project run
-
-```sh
-python start_up.py
+To start the project run on a Mac, Linux or Windows Bash Shell
+```
+source start_up.sh
 ```
 <!-- pip install -r requirements.txt -->
 <!-- python manage.py runserver -->
@@ -87,6 +87,7 @@ Test Criteria:
 
 Test Cases:
 
+These tests can be exported from tests/api_tests/ into a Postman Collection.
 Note: Guest means not logged in. **X** = failed tests.
 - CREATE
     - User password strength must follow the Django Guidelines. 
@@ -111,7 +112,7 @@ Note: Guest means not logged in. **X** = failed tests.
     - Admin can delete any account
     - Admin can delete any course
 
-# Developer Notes
+# Developer Notes <a name = "dev"></a>
 - Backend: This was the first time I've used Django, so starting it up was the hardest part, but once I got past the setup the rest was similar to Flask (models, views) so it became easy to build. 
 
     - Challenges: 
@@ -128,8 +129,39 @@ Note: Guest means not logged in. **X** = failed tests.
     - Mistakes
         - I spent too much time deciding between Axios versus Fetch for sending HTTP requests.
 
-# Summary of Project requirements and Nice to Haves.
+## Project Requirements and Nice to Haves. <a name="summary"></a>
+### 1. Admin Panel/Dashboard
+- Import/export data into the database via the Admin Panel
+- User Management (CRUD)
+- Group Management (CRUD)
+- Course Management (CRUD)
 
+### 2. API Endpoints
+- Sign up a non-admin account
+- Login to an account
+- Display all Courses
+- Edit an existing Course
+
+### 3. Frontend Display
+- Login/Register Page
+- Course Page
+- Profile Page
+- Home Page
+
+### 4. Nice to haves 
+- End to End tests.
+- Auto deployment scripts
+- Comments in code/Self documenting code
+- Load test script for 100 concurrent requests.
+
+### Areas for Improvement
+- Question/Quiz Feature. 
+- Frontend Auth handling.
+- Frontend Error Handling.
+- Custom User Model.
+- API cannot add a course.
+- Frontend could look a lot nicer.
+- Windows Support for startup script.
 
 # Technical Questions <a name = "qa"></a>
 ### 1. What libraries did you add to the frontend? What are they used for?
@@ -140,10 +172,12 @@ Note: Guest means not logged in. **X** = failed tests.
     - react-router-dom, to maintain page history and routes for each page.
 
 ### 2. What's the command to start the application locally?
+For Mac or Linux. If on Windows download a bash shell.
 ```
-python start_up.py
+source start_up.sh
 ```
-Runs a series of other commands, mainly initializing the Database, API, and website to run in the background. See script for exact commands.
+
+This runs a series of other commands, mainly initializing the Database, API, and website to run in the background. See script for exact commands.
 
 ### 3. How long did you spend on the coding project? What would you add to your solution if you had more time? If you didn't spend much time on the coding project, then use this as an opportunity to explain what you would add.
 - I spent roughly 4 hours a day for the given week. Approx 20 so far. I wanted to showcase what I can do as a Full-Stack and used the Take-Home project as my motivator to learn Django and JWT handling. 
