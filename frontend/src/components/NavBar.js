@@ -49,7 +49,7 @@ function NavBar(props) {
                 </NavLink>
               </NavItem>
               {/* Display only if not logged in */}
-              <NavItem>
+              {/* <NavItem>
                 <NavLink
                   tag={RouterNavLink}
                   to="/login"
@@ -58,7 +58,7 @@ function NavBar(props) {
                 >
                   <button> Login </button>
                 </NavLink>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
                 <NavLink
                   tag={RouterNavLink}
