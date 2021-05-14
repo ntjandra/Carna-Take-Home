@@ -31,7 +31,9 @@ To make sure there are no extra components that could clash with the imports, I 
 
 To start the project run
 
-```python start_up.py```
+```sh
+python start_up.py
+```
 <!-- pip install -r requirements.txt -->
 <!-- python manage.py runserver 0.0.0.0:5000 for Django -->
 <!-- npm install for packages -->
@@ -42,9 +44,12 @@ To start the project run
 On **http://localhost:8000/admin/** there is a field to login as a superuser and add more users.
 You can set this up to be anything you like by running the command here and replacing the fields of 'admin', 'admin@example.com', 'adminpass'.
 
-```./manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'adminpass')"```
+```sh
+./manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'adminpass')"
+```
 
-Upon logging in to the dashboard the admin can manage Courses, Users, and Questions. In addition, the admin can also export the data into a JSON or CSV, or load in their own datasheet.
+Upon logging in to the dashboard the admin can manage Courses, Users, and (Permission) Groups. In addition, the admin may also export the data into a JSON or CSV, or load in their own datasheet.
+
 ### API
 On **http://localhost:8000/api/**
 The API is hosted to perform CRUD operations for all the existing tables of data. There are three routes for the User, Course, and Question.
