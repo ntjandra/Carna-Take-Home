@@ -78,7 +78,7 @@ and consists of 6 pages.
 ## Testing <a name = "test"></a>
 For API testing, I use [Postman]() to generate a collection of endpoint calls to then verify the outputs and response status. For load balance testing, I use [Locust]() to hit randomized endpoints with parameters at a customized frequency and then generate a chart to view response time and failures.
 
-[Results]()
+Results of the load balance tests are found in tests/load_tests.
 
 Test Criteria:
 - API response must not exceed 2.5 seconds.
@@ -127,6 +127,9 @@ Note: Guest means not logged in. **X** = failed tests.
         - Seperating the logins for a Teacher account versus a Student account. Had to add the is_teacher/Student to token fields.
     - Mistakes
         - I spent too much time deciding between Axios versus Fetch for sending HTTP requests.
+
+# Summary of Project requirements and Nice to Haves.
+
 
 # Technical Questions <a name = "qa"></a>
 ### 1. What libraries did you add to the frontend? What are they used for?
