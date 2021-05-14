@@ -2,8 +2,7 @@
 import React from "react";
 
 const HomePage = (props) => {
-    
-    return(
+  return(
     <div>
       <h1> Home Page of Carna Coursework</h1>
     </div>

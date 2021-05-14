@@ -66,7 +66,7 @@ Note that the user route requires authenthication in order to edit or view anoth
 *http://localhost:8000/token-auth/*.
 
 ### Website 
-The website is hosted on **http://localhost:5000**
+The website is hosted on **http://localhost:3000**
 and consists of 6 pages.
 - Home Page
 - Sign Up Page

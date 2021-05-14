@@ -10,12 +10,13 @@ const CoursePage = (props) => {
   }
   
   // Display Course Title, Date Posted, and Rating
-  const listCourses = courses.map((course, index) =>
+  const listCourses = courses.map((course) =>
   // Form List of Cards
     // <h1> Course {index} </h1>
-    <Card title={course.title}
+    <Card key={course.id}
+    title={course.title}
     date={course.release_date}
-    link='https://localhost:8000/courses/`$course.id`'
+    link={`http://localhost:3000/course/${course.id}`}
     rating={course.stars}
     detail={course.description}/>
 

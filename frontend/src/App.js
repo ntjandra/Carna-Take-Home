@@ -6,10 +6,10 @@ import { Container } from "reactstrap";
 
 import Home from './views/HomePage';
 import Register from './views/RegisterPage'; // Contains sign up
-import Login from './views/LoginPage';
 import NavBar from "./components/NavBar";
 import About from "./views/AboutPage";
 import Course from "./views/CoursePage";
+import Program from "./views/ProgramPage";
 import Profile from "./views/ProfilePage";
 import history from "./utils/history"; // Keep track of prev/next page.
 
@@ -44,8 +44,8 @@ function App() {
             <Route path="/about" exact component={About} />
             <Route path="/profile" component={Profile} />
             <Route path="/courses" exact component={Course} />
+            <Route path="/course/:id" exact component={Program} />
             <Route path="/register" exact component={Register} />
-            <Route path="/login" exact component={Login} />
           </Switch>
         </Container>
       </div>
