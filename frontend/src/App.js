@@ -15,28 +15,23 @@ import history from "./utils/history"; // Keep track of prev/next page.
 
 
 function App() {
-  // Store Login through JWT information
-  const [user, setUser] = useState()
-
-  // Add Hook to check if logged in and update state
-  // if there's a user show the message below
-  // if (user) {
-  //   return <div>{user.name} is loggged in</div>;
-  // }
+  // App Tracks login state
+  const [isLogin, setIsLogin] = useState(localStorage.getItem('token') ? true : false);
+  console.log(isLogin)
 
   // Clear the LocalStorage
   const handleLogout = () => {
-    setUser({});
     localStorage.removeItem("token");
+    setIsLogin(false)
   };
-  
+
   
   // Routing to display certain pages.
   return (
     <Router history={history}>
       <div id="app" className="d-flex flex-column h-100">
         {/* Pass logout method to navbar */}
-        <NavBar handleLogout={handleLogout}/>
+        <NavBar handleLogout={handleLogout} isLogin={isLogin}/>
         <Container className="flex-grow-1 mt-5">
           {/* 4-5 Screens  */}
           <Switch>

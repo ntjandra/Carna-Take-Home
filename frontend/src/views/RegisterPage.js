@@ -101,11 +101,14 @@ class RegisterPage extends Component {
           handle_logout={this.handle_logout}
         />
         {form}
+
+        {this.state.logged_in
+        ? window.location.href = ('/')
+        :
         <h3>
-          {this.state.logged_in
-            ? `Hello, ${this.state.username}`
-            : 'Please Log In'}
+            Please Log In
         </h3>
+        }
       </div>
     );
   }

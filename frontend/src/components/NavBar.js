@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import { NavLink as RouterNavLink } from "react-router-dom";
 import {
-  Collapse,
   Container,
   Navbar,
   NavbarToggler,
@@ -10,17 +9,17 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Button,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
 } from "reactstrap";
 
 
 function NavBar(props) {
 
+  // Get the logged in state, but also need to call this more than once, but not infinite.
+
   // Return a NavBar to visit different pages
+  // Always Display: Home, About, Courses
+  // If authenthicated: Profile, Logout
+  // Not authenthicated: Register/Log in
   return (
     <div className="nav-container">
       <Navbar color="light" light expand="md">
@@ -48,27 +47,6 @@ function NavBar(props) {
                   <button> About </button>
                 </NavLink>
               </NavItem>
-              {/* Display only if not logged in */}
-              {/* <NavItem>
-                <NavLink
-                  tag={RouterNavLink}
-                  to="/login"
-                  exact
-                  activeClassName="router-link-exact-inactive"
-                >
-                  <button> Login </button>
-                </NavLink>
-              </NavItem> */}
-              <NavItem>
-                <NavLink
-                  tag={RouterNavLink}
-                  to="/register"
-                  exact
-                  activeClassName="router-link-exact-inactive"
-                >
-                  <button> Register </button>
-                </NavLink>
-              </NavItem>
               <NavItem>
                 <NavLink
                   tag={RouterNavLink}
@@ -79,25 +57,43 @@ function NavBar(props) {
                 <button> View Courses </button>
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink
-                  tag={RouterNavLink}
-                  to="/profile"
-                  exact
-                  activeClassName="router-link-exact-inactive"
-                >
-                <button> Profile </button>
+              {/* Display only if logged in */}
+              { props.isLogin ? 
+              <>
+                <NavItem>
+                  <NavLink
+                    tag={RouterNavLink}
+                    to="/profile"
+                    exact
+                    activeClassName="router-link-exact-inactive"
+                  >
+                  <button> Profile </button>
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink
+                    tag={RouterNavLink}
+                    to="/"
+                    exact
+                    activeClassName="router-link-exact-inactive"
+                    onClick={() => props.handleLogout}
+                  >
+                  <button onClick={props.handleLogout}> Log out</button>
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink
-                  to="#"
-                  id="qsLogoutBtn"
-                  onClick={() => props.handleLogout}
-                >
-                <button color="secondary" size="lg">Log out</button>
+            </>
+            :
+            <NavItem>
+              <NavLink
+                tag={RouterNavLink}
+                to="/register"
+                exact
+                activeClassName="router-link-exact-inactive"
+              >
+                <button> Register or Login </button>
               </NavLink>
             </NavItem>
+            }
           </Nav>
         </Container>
       </Navbar>
@@ -106,3 +102,7 @@ function NavBar(props) {
 };
 
 export default NavBar;
+NavBar.propTypes = {
+  handleLogout: PropTypes.func.isRequired,
+  isLogin: PropTypes.bool.isRequired,
+};

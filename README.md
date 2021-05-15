@@ -78,10 +78,12 @@ and consists of 4 completed pages.
 ## Testing <a name = "test"></a>
 For API testing, I use [Postman]() to generate a collection of endpoint calls to then verify the outputs and response status. For load balance testing, I use [Locust]() to hit randomized endpoints with parameters at a customized frequency and then generate a chart to view response time and failures.
 
-Results of the load balance tests are found in tests/load_tests.
+Results of the load balance tests are found in tests/load_tests. The tests may be rerun by typing
+"locust" and then navigating to localhost:8089 to fill in additional information(Max Users, Users/seconds, and endpoint).
 
 Test Criteria:
 - API response must not exceed 2.5 seconds.
+- Response Status should never be 5XX
 - API is sent 100 requests per second.
 - Basic SQL Injection Attack mixed in: i.e "(Robert'); DROP TABLE User;--)".
 
@@ -120,7 +122,8 @@ Note: Guest means not logged in. **X** = failed tests.
         - Creating a Custom login in order to customize User types (Students and Teachers). Django's Built in needed to be rewritten. This was the only way to add a filter by location.
         - Understanding what ViewSets are and how they work, and the alternatives, such as direct function calls.
         - Looking back into the old history of regex to define routes.
-    - Mistakes: I deleted the migrations folder to "restart from scratch". Never do this. Ever! I fixed it by eventually hard resetting the db by dropping all tables, then reran migrate.
+    - Mistakes 
+        - I deleted the migrations folder to "restart from scratch". Never do this. Ever! I fixed it by eventually hard resetting the db by dropping all tables, then reran migrate.
 
 - Frontend: I've done projects with React but use third party apps to handle login, so building an authenthicator was new for me. I was told not to focus on the UI too heavily so I leveraged Bootstrap to create basic buttons to call endpoints and displayed the results on a card in the page. Errors messages were shown on the page to verify the endpoint response.
     - Challenges
@@ -156,10 +159,9 @@ Note: Guest means not logged in. **X** = failed tests.
 
 ### Areas for Improvement
 - Question/Quiz Feature. 
-- Frontend Auth handling.
 - Frontend Error Handling.
 - Custom User Model.
-- API cannot add a course.
+- Cannot add a course, unless through Admin Dashboard.
 - Frontend could look a lot nicer.
 - Windows Support for startup script.
 
@@ -181,7 +183,7 @@ source start_up.sh
 This runs a series of other commands, mainly initializing the Database, API, and website to run in the background. See script for exact commands.
 
 ### 3. How long did you spend on the coding project? What would you add to your solution if you had more time? If you didn't spend much time on the coding project, then use this as an opportunity to explain what you would add.
-- I spent roughly 4 hours a day for the given week. Approx 20 so far. I wanted to showcase what I can do as a Full-Stack and used the Take-Home project as my motivator to learn Django and JWT handling. 
+- I spent roughly 4-5 hours a day for the given week. Approx 25 so far. I wanted to showcase what I can do as a Full-Stack and used the Take-Home project as my motivator to learn Django and JWT handling. 
 - On the Backend, if I had more time I would have created a custom user model, instead of using Django's built-in User model.
 - On the Frontend, I would add more screens and buttons that interact with the API, and more tests.
 - As an extra feature, I wanted to finish adding quiz questions to a course.
