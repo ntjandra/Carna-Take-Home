@@ -27,7 +27,7 @@ function App() {
   
   // Routing to display certain pages.
   return (
-    <Router history={history}>
+    <Router>
       <div id="app" className="d-flex flex-column h-100">
         {/* Pass logout method to navbar */}
         <NavBar handleLogout={handleLogout} isLogin={isLogin}/>
