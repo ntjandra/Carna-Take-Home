@@ -40,16 +40,6 @@ function NavBar(props) {
               <NavItem>
                 <NavLink
                   tag={RouterNavLink}
-                  to="/about"
-                  exact
-                  activeClassName="router-link-exact-inactive"
-                >
-                  <button> About </button>
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  tag={RouterNavLink}
                   to="/courses"
                   exact
                   activeClassName="router-link-exact-inactive"

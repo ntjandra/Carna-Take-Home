@@ -7,7 +7,6 @@ import { Container } from "reactstrap";
 import Home from './views/HomePage';
 import Register from './views/RegisterPage'; // Contains sign up
 import NavBar from "./components/NavBar";
-import About from "./views/AboutPage";
 import Course from "./views/CoursePage";
 import Program from "./views/ProgramPage";
 import Profile from "./views/ProfilePage";
@@ -36,7 +35,6 @@ function App() {
           {/* 4-5 Screens  */}
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/about" exact component={About} />
             <Route path="/profile" component={Profile} />
             <Route path="/courses" exact component={Course} />
             <Route path="/course/:id" exact component={Program} />
