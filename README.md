@@ -72,7 +72,7 @@ and consists of 4 completed pages.
 - Sign Up and Login Page
 - Course Page
 - Program Page
-- Profile Page (WIP)
+- Profile Page
 - Quiz Page (WIP)
 
 ## Testing <a name = "test"></a>
@@ -163,7 +163,7 @@ Note: Guest means not logged in. **X** = failed tests.
 - Custom User Model.
 - Cannot add a course, unless through Admin Dashboard.
 - Frontend could look a lot nicer.
-- Test Coverage.
+- Test Coverage. Ran into an issue with CSRF so I couldn't automate Admin Panel tests.
 - Windows Support for startup script.
 
 # Technical Questions <a name = "qa"></a>
