@@ -172,7 +172,8 @@ Note: Guest means not logged in. **X** = failed tests.
     - Reactstrap x Bootstrap, to handle styling using prebuilt components that I extended to meet the needs.
     - prop-types, to check and validate type errors when passing props. It also makes the components easier to understand.
     - react-scripts, a built in part of the React framework that starts up the web server for building or quick deployment.
-    - react-router-dom, to maintain page history and routes for each page.
+    - react-router-dom, to maintain page routes for each page.
+    - history, to keep track of forward and back while browsing.
     - jwt-decode, to decode jwt tokens and extract useful metadata.
 
 ### 2. What's the command to start the application locally?
