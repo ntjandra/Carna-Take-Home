@@ -18,7 +18,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-To run this project, the machine must have installed [Python](), [React](), and have a [Postgres]() server running with the following credentials setup.
+To run this project, the machine must have installed [Python](https://www.python.org/downloads/), [Node.js and React](https://www.codecademy.com/articles/react-setup-i), and have a [Postgres](https://www.postgresql.org/download/) server running with the following credentials setup.
 
 ```txt
 database = 'api'
@@ -28,7 +28,7 @@ password = 'password'
 
 ### Installing
 
-To make sure there are no extra components that could clash with the imports, I recommend creating a [Virtual Environment]() using pipenv.
+To make sure there are no extra components that could clash with the imports, I recommend creating a [Virtual Environment](https://pypi.org/project/pipenv/) using pipenv.
 
 To start the project run on a Mac, Linux or Windows Bash Shell
 ```
@@ -76,7 +76,7 @@ and consists of 4 completed pages.
 - Quiz Page (WIP)
 
 ## Testing <a name = "test"></a>
-For API testing, I use [Postman]() to generate a collection of endpoint calls to then verify the outputs and response status. For load balance testing, I use [Locust]() to hit randomized endpoints with parameters at a customized frequency and then generate a chart to view response time and failures.
+For API testing, I use [Postman](https://www.postman.com/downloads/) to generate a collection of endpoint calls to then verify the outputs and response status. For load balance testing, I use [Locust](https://locust.io/) to hit randomized endpoints with parameters at a customized frequency and then generate a chart to view response time and failures.
 
 Results of the load balance tests are found in tests/load_tests. The tests may be rerun by typing
 "locust" and then navigating to localhost:8089 to fill in additional information(Max Users, Users/seconds, and endpoint).
@@ -163,6 +163,7 @@ Note: Guest means not logged in. **X** = failed tests.
 - Custom User Model.
 - Cannot add a course, unless through Admin Dashboard.
 - Frontend could look a lot nicer.
+- Test Coverage.
 - Windows Support for startup script.
 
 # Technical Questions <a name = "qa"></a>
@@ -189,11 +190,23 @@ This runs a series of other commands, mainly initializing the Database, API, and
 - As an extra feature, I wanted to finish adding quiz questions to a course.
 
 ### 4. What was the most useful feature that was added to the latest version of your chosen language? Please include a snippet of code that shows how you've used it.
-- In terms of the Python Framework, Django, having the Admin Panel be built-in made it very easy to create a dashboard. There were also some libraries to extend the dashboard to handle import/export of large datasets.
+- In terms of the Python Framework, Django, having the Admin Panel be built-in made it very easy to create a dashboard as well as support to extend the dashboard to handle import/export of large datasets.
 - As for React, ES6 allowing developers to create values as variables helped make passing values much easier.
+
+```js
+this.setState(prevstate => {
+    const newState = { ...prevstate };
+    newState[name] = value;
+    return newState;
+});
+```
+- ES6 also introduced a longer time ago, string interpolation which helped me with writing clean routes.
+```js     
+link={`http://localhost:3000/course/${course.id}`}
+```
+
 - Outside of frameworks I did not use any recent language only feature.
 
-   [Image](Img)
 
 ### 5. How would you track down a performance issue in production? Have you ever had to do this?
 - I would start from looking at the time it takes for the API to process a request, as most performance issues lie on the Backend. This could lead to a bottleneck where a query takes far too long. While if the page itself was loading slowly, I would inspect the Frontend React Components and make sure the state is updated properly and the endpoint is called exactly once.
