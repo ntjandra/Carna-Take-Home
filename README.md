@@ -1,4 +1,5 @@
 # Carna Take-Home Challenge
+## Developed by Nathaniel Tjandra
 ## Table of Contents
 
 - [About](#about)
@@ -67,13 +68,12 @@ Note that the user route requires authenthication in order to edit or view anoth
 
 ### Website 
 The website is hosted on **http://localhost:3000**
-and consists of 4 completed pages.
+and consists of 4-5 completed pages.
 - Home Page
 - Sign Up and Login Page
 - Course Page
 - Program Page
-- Profile Page (WIP)
-- Quiz Page (WIP)
+- Profile Page
 
 ## Testing <a name = "test"></a>
 For API testing, I use [Postman](https://www.postman.com/downloads/) to generate a collection of endpoint calls to then verify the outputs and response status. For load balance testing, I use [Locust](https://locust.io/) to hit randomized endpoints with parameters at a customized frequency and then generate a chart to view response time and failures.
@@ -163,7 +163,7 @@ Note: Guest means not logged in. **X** = failed tests.
 - Custom User Model.
 - Cannot add a course, unless through Admin Dashboard.
 - Frontend could look a lot nicer.
-- Test Coverage.
+- Test Coverage. Ran into an issue with CSRF so I couldn't automate Admin Panel tests.
 - Windows Support for startup script.
 
 # Technical Questions <a name = "qa"></a>
@@ -172,7 +172,8 @@ Note: Guest means not logged in. **X** = failed tests.
     - Reactstrap x Bootstrap, to handle styling using prebuilt components that I extended to meet the needs.
     - prop-types, to check and validate type errors when passing props. It also makes the components easier to understand.
     - react-scripts, a built in part of the React framework that starts up the web server for building or quick deployment.
-    - react-router-dom, to maintain page history and routes for each page.
+    - react-router-dom, to maintain page routes for each page.
+    <!-- - history, to keep track of forward and back while browsing. -->
     - jwt-decode, to decode jwt tokens and extract useful metadata.
 
 ### 2. What's the command to start the application locally?

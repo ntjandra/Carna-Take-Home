@@ -29,5 +29,4 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api/', include('carna_api.urls')), # User URLs here.
     path('token-auth/', obtain_jwt_token),
-    
 ]
